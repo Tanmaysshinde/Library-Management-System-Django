@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin{% endblock title %}
+
+{% block content %}
+
+<div class="text-center mt-2">
+    <h1>Hello {{ user.username }} !!<h1>
+    <h4 class="text-success">Welcone to the Admin Panel of TSS Library</h4>
+</div><hr>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-0 col-sm-4">
+        </div>
+        <div class="card col-12 col-sm-4">
+            <a class="btn btn-primary mt-2 mb-2" href="{% url 'adaddnewbooks' %}">Add Books</a>
+            <a class="btn btn-primary mb-2" href="{% url 'viewbooks' %}">View Available Books</a>
+            <a class="btn btn-primary mb-2" href="{% url 'issuebook' %}">Issue New Book</a>
+            <a class="btn btn-primary mb-2" href="{% url 'viewissuedbooks' %}">View Issued Books</a>
+            <a class="btn btn-primary mb-2" href="{% url 'addstudent' %}">Add new Student</a>
+            <a class="btn btn-primary mb-2" href="{% url 'viewstudents' %}">View Students</a>
+            <a class="btn btn-primary mb-2">Logout</a>
+        </div>
+        <div class="col-0 col-sm-4">
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

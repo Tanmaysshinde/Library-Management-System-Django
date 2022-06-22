@@ -1,0 +1,109 @@
+<!doctype html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <title>TSS | {% block title %}{% endblock title%}</title>
+    <link rel="stylesheet" href="{%static 'css/main1.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+    <body>
+
+      {% if not user.is_authenticated %}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container">
+            <div class="container">
+              <a class="navbar-brand" href="#"><span class="text-primary">Library<span class="text-warning"> Management<span class="text-success"> System</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'adminLogin' %}">Admin</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'student' %}">Student</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      {% else %} 
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <div class="container">
+            <a class="navbar-brand" href="#"><span class="text-primary">Library<span class="text-warning"> Management<span class="text-success"> System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'adminpanel' %}">Home</a>
+              </li>
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" id="books" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Books
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="books">
+                      <li><a class="dropdown-item" href="{% url 'adaddnewbooks' %}">Add New Books</a></li>
+                      <li><a class="dropdown-item" href="{% url 'viewbooks' %}">View Available Books</a></li>
+                    </ul>
+                </li>
+              </ul>
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" id="issuebooks" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Issue Books
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="issuebooks">
+                      <li><a class="dropdown-item" href="{% url 'issuebook' %}">Issue New Book</a></li>
+                      <li><a class="dropdown-item" href="{% url 'viewissuedbooks' %}">View Issued Books</a></li>
+                    </ul>
+                </li>
+              </ul>
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" id="students" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Students
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="students">
+                      <li><a class="dropdown-item" href="{% url 'addstudent' %}">Add New Student</a></li>
+                      <li><a class="dropdown-item" href="{% url 'viewstudents' %}">View Students</a></li>
+                    </ul>
+                </li>
+              </ul>
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{user.username}}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                    </ul>
+                </li>
+              </ul>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      {% endif %}
+
+    </body>
+
+  <script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+  </script>
+
+  {% block content %} {% endblock content %}
+
+</html>

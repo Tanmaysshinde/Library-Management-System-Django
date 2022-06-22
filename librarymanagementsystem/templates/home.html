@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+
+<div class="container mt-4 mb-2">
+    <div class="text-center mt-2">
+        <h1>Welcone to the TSS Library<h1>
+        <h4 class="text-success">This is Library Management System of TSS Lirary</h4>
+    </div><hr>
+    <div class="card bg-secondary">
+        <div class="row mt-4">
+            <div class="col-12 col-sm-6 text-center mt-4">
+                <img src="{% static 'image/admin.png' %}" alt="Admin" class="imghw mb-4">
+                <p><a class="btn btn-primary btn-lg" class="mt-4" href="{% url 'adminLogin' %}">Admin</a></p>
+            </div>
+            <div class="col-12 col-sm-6 text-center mt-4">
+                <img src="{% static 'image/student1.png' %}" alt="Student" class="imghw mb-4">
+                <p><a class="btn btn-primary btn-lg" class="mt-4" href="{% url 'student' %}">Student</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

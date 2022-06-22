@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Login{% endblock title %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-0 col-sm-4">
+        </div>
+        <div class="col-12 col-sm-4">
+            {% for message in messages %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="fas fa-times-circle"></i> <strong>{{message}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+            <div class="card p-2">
+                <div class="text-center mb-3">
+                    <div class="card-header">
+                        <h2>Admin Login</h2>
+                    </div>
+                </div>
+            <form action="{% url 'adminLogin' %}" method="POST">
+                {% csrf_token %}
+                <div class="card-body">
+                    <div class="mb-2" id="username">
+                        <p class="mb-2"><h5>Username : </h5></p>
+                        {{ loginform.username }}
+                    </div>
+                    <div class="mt-4 mb-3" id="pass_word">
+                    <p class="mb-2"><h5>Password : </h5></p>
+                    {{ loginform.password }}
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <input type="submit" value="Log In" class="btn btn-block btn-primary form-control">
+                </div>
+            </form>
+            </div>
+        </div>
+        <div class="col-0 col-sm-4">
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
